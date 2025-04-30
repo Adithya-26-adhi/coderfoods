@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title> CODERS SITE </title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background;
+      color: #;
+      text-align: center;
+    }
+    header {
+      background-color: #f44336;
+      color: white;
+      padding: 30px 20px;
+    }
+    h1 {
+      margin: 0;
+    }
+    .container {
+      padding: 40px 20px;
+    }
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .site-btn {
+      background-color: white;
+      border: 2px solid #ff4c4c;
+      color: #ff4c4c;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .site-btn:hover {
+      background-color: #ff4c4c;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Coders Food Orders </h1>
+    <p>Click And Enjoy The Meal !!!</p>
+  </header>
+
+  <div class="container">
+    <div class="link-grid">
+      <a href="https://www.pizzahut.com/" target="_blank" class="site-btn">Pizza Hut</a>
+      <a href="https://www.dominos.com/" target="_blank" class="site-btn">Domino’s</a>
+      <a href="https://www.ubereats.com/" target="_blank" class="site-btn">Uber Eats</a>
+      <a href="https://www.doordash.com/" target="_blank" class="site-btn">DoorDash</a>
+      <a href="https://www.grubhub.com/" target="_blank" class="site-btn">Grubhub</a>
+      <a href="https://www.zomato.com/" target="_blank" class="site-btn">Zomato</a>
+      <a href="https://www.swiggy.com/" target="_blank" class="site-btn">Swiggy</a>
+      <a href="https://mcdelivery.co.in/" target="_blank" class="site-btn">McDonald's</a>
+      <a href="https://www.popeyes.in/" target="_blank" class="site-btn">Popeyes</a>
+      <a href="https://online.kfc.co.in/" target="_blank"class="site-btn">KFC</a>
+      <a href="https://www.coca-cola.com/in/en" target="_blank"class="site-btn">Coca Cola</a>
+      <a href="https://www.burgerking.in" target="_blank"class="site-btn">Burger King</a>
+    </div>
+  </div>
+
+<div class="coupon-container">
+    <h2>🔥 Exclusive Coupons</h2>
+    <p>Click on "Copy Code" to use instantly!</p>
+    <div class="coupon-grid">
+      <div class="coupon-card">
+        <h3>50% OFF</h3>
+        <p>Get half off your first meal order.</p>
+        <code>MEAL50</code>
+        <button onclick="copyCoupon('MEAL50')">Copy Code</button>
+      </div>
+      <div class="coupon-card">
+        <h3>Free Delivery</h3>
+        <p>No delivery fee on orders above ₹199.</p>
+        <code>FREEDEL</code>
+        <button onclick="copyCoupon('FREEDEL')">Copy Code</button>
+      </div>
+      <div class="coupon-card">
+        <h3>Buy 1 Get 1</h3>
+        <p>BOGO available at select outlets today only.</p>
+        <code>BOGO</code>
+        <button onclick="copyCoupon('BOGO')">Copy Code</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">Coupon copied!</div>
+
+  <script>
+    function copyCoupon(code) {
+      navigator.clipboard.writeText(code).then(() => {
+        showToast("Coupon '" + code + "' copied to clipboard!");
+      });
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.className = "toast show";
+      setTimeout(() => {
+        toast.className = toast.className.replace("show", "");
+      }, 3000);
+    }
+
+    function filterLinks() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const grid = document.getElementById("linkGrid");
+      const links = grid.getElementsByTagName("a");
+
+      for (let i = 0; i < links.length; i++) {
+        const text = links[i].textContent.toLowerCase();
+        links[i].style.display = text.includes(input) ? "" : "none";
+      }
+    }
+  </script>
+
+</body>
+</html>
